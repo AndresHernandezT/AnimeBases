@@ -10,38 +10,58 @@ CREATE SCHEMA public;"""
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE posts 
-           (id serial PRIMARY KEY, titulo varchar(40), resumen varchar, texto text, creado timestamp);
+CREATE TABLE animes 
+           (id serial PRIMARY KEY, nombre varchar(40), cant_capitulos integer, tipo varchar(40), autor_id integer, estudio_id integer);
 """
 
 cur.execute(sql)
 
 
 sql ="""
-CREATE TABLE categorias 
-           (id serial PRIMARY KEY, nombre varchar(40), creado timestamp);
+CREATE TABLE estados 
+           (anime_id integer PRIMARY KEY, tipo_de_estado varchar(40), fecha_emision varchar(10), fecha_termino varchar(10));
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE categorias_posts 
-           (categoria_id integer, post_id integer);
+CREATE TABLE animes_generos
+           (anime_id integer, genero_id integer);
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE  usuarios
-           (id serial PRIMARY KEY,rol integer, nombre varchar(40),apellido varchar(40),
-           email varchar(100),passwd varchar(255), creado timestamp);
+CREATE TABLE  autores
+           (id serial PRIMARY KEY, nombre varchar(140));
 """
 
 cur.execute(sql)
 
 sql ="""
-CREATE TABLE comentarios
-           (id serial PRIMARY KEY, comentario varchar(140), post_id integer, usuario_id integer, creado timestamp);
+CREATE TABLE estudios
+           (id serial PRIMARY KEY, nombre varchar(140));
+"""
+
+cur.execute(sql)
+
+sql ="""
+CREATE TABLE personajes
+           (id serial PRIMARY KEY, nombre varchar(140));
+"""
+
+cur.execute(sql)
+
+sql ="""
+CREATE TABLE animes_personajes
+           (anime_id integer, personajes_id integer);
+"""
+
+cur.execute(sql)
+
+sql ="""
+CREATE TABLE generos
+           (id serial PRIMARY KEY, nombre varchar(40));
 """
 
 cur.execute(sql)
