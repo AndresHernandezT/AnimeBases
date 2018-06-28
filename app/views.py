@@ -10,5 +10,12 @@ cur = conn.cursor()
 @app.route('/')
 @app.route('/index')
 def index():
-	return "Nada por ahora"
+	sql = "select * from animes"
+	cur.execute(sql)
+	resultados = cur.fetchall()
+	print resultados
+	return resultados[0][0]
 
+@app.route('/adios')
+def adios():
+        return "No me quiero venir, senores homeros"
